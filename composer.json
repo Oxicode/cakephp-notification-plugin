@@ -7,10 +7,6 @@
 	},
 	"keywords": ["cakephp", "plugin", "notification"],
 	"homepage": "https://github.com/Oxicode/cakephp-notification-plugin",
-	"repositories": [{
-		"type": "vcs",
-		"url": "https://github.com/aschelch/cakephp-notification-plugin"
-	}],
 	"authors": [{
 		"name": "Aurélien Schelcher",
 		"homepage": "http://www.aschelch.fr",
