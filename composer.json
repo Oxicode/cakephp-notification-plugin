@@ -1,21 +1,28 @@
 {
-    "name": "aschelch/cakephp-notification-plugin",
-    "description": "CakePHP Notification Plugin provide an notification system",
-    "type": "cakephp-plugin",
-    "extra": {
-        "installer-name": "Notification"
-    },
-    "keywords": ["cakephp", "plugin", "notification"],
-    "homepage": "https://github.com/aschelch/cakephp-notification-plugin",
-    "authors": [
-        {
-            "name": "Aurélien Schelcher",
-            "homepage": "http://www.aschelch.fr",
-            "role": "Author"
-        }
-    ],
-    "require": {
-        "php": ">=5.3.0",
-        "composer/installers": "*"
-    }
+	"name": "oxicode/cakephp-notification-plugin",
+	"description": "CakePHP Plugin de Notificaciones",
+	"type": "cakephp-plugin",
+	"extra": {
+		"installer-name": "Notification"
+	},
+	"keywords": ["cakephp", "plugin", "notification"],
+	"homepage": "https://github.com/Oxicode/cakephp-notification-plugin",
+	"repositories": [{
+		"type": "vcs",
+		"url": "https://github.com/aschelch/cakephp-notification-plugin"
+	}],
+	"authors": [{
+		"name": "Aurélien Schelcher",
+		"homepage": "http://www.aschelch.fr",
+		"role": "Author"
+	}, {
+		"name": "Christian Quispe",
+		"homepage": "http://oxicode.io",
+		"role": "Author"
+	}],
+	"require": {
+		"php": ">=5.3.0",
+		"composer/installers": "*",
+		"aschelch/cakephp-notification-plugin": "dev-master"
+	}
 }
