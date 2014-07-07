@@ -25,7 +25,7 @@ class Subject extends NotificationAppModel {
 		foreach ($results as $k => $result) {
 			$model = $result['Subject']['model'];
 			if(array_key_exists($model, $result)){
-				$results[$k] = $result[$this->alias]+array($model => $result[$model]);
+				$results[$k] = $result[$this->alias] + array($model => $result[$model]);
 				//$results[$k] = array($this->alias=>$result[$this->alias]+array($model => $result[$model]));
 			}
 		}

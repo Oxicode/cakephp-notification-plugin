@@ -71,43 +71,39 @@ class Notification extends NotificationAppModel {
 		)
 	);
 
-	public function afterFind($results, $primary = false){
-		if($primary){
-			$ids = Set::classicExtract($results, '{n}.Notification.id');
-			$subjects = $this->Subject->findAllByNotificationId($ids);
-			foreach ($results as $k => $result) {
-				$s = Set::extract('/.[notification_id='.$result['Notification']['id'].']', $subjects);
-				foreach ($s as $t) {
-					$results[$k][$t['model']] = $t[$t['model']];
-				}
+	public function getUnread($user_id = null, $limit = false){
+		return $this->find('count', array(
+			'conditions' => array(
+				'Notification.read' => false,
+				'Notification.user_id' => $user_id
+			),
+			'limit' => $limit,
+		));
+	}
+
+	public function getLast($user_id, $limit = 20){
+		$results = $this->find('all', array(
+			'conditions' => array(
+				'Notification.user_id' => $user_id,
+				"Notification.created >" => date('Y-m-d', strtotime("-1 weeks"))
+			),
+			'limit' => $limit,
+		));
+		$ids = Set::classicExtract($results, '{n}.Notification.id');
+		$subjects = $this->Subject->findAllByNotificationId($ids);
+		foreach ($results as $k => $result) {
+			$s = Set::extract('/.[notification_id='.$result['Notification']['id'].']', $subjects);
+			foreach ($s as $t) {
+				$results[$k][$t['model']] = $t[$t['model']];
 			}
 		}
 		return $results;
 	}
 
-	public function getUnread($user_id, $limit = false){
-		return $this->find('all', array(
-			'conditions' => array(
-				'Notification.user_id' => $user_id,
-				'Notification.read' => false
-			),
-			'limit' => $limit,
-		));
-	}
-
-	public function getLast($user_id, $limit = 5){
-		return $this->find('all', array(
-			'conditions' => array(
-				'Notification.user_id' => $user_id,
-			),
-			'limit' => $limit,
-		));
-	}
-
 	public function markAllAsRead($user_id){
 		return $this->updateAll(
-			array('Notification.read'=>true),
-			array('Notification.user_id'=>$user_id)
+			array('Notification.read' => true),
+			array('Notification.user_id' => $user_id)
 		);
 	}
 
