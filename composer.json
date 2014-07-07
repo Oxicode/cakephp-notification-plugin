@@ -8,10 +8,6 @@
 	"keywords": ["cakephp", "plugin", "notification"],
 	"homepage": "https://github.com/Oxicode/cakephp-notification-plugin",
 	"authors": [{
-		"name": "Aurélien Schelcher",
-		"homepage": "http://www.aschelch.fr",
-		"role": "Author"
-	}, {
 		"name": "Christian Quispe",
 		"homepage": "http://oxicode.io",
 		"role": "Author"
