@@ -107,7 +107,7 @@ class NotifiableBehavior extends ModelBehavior {
     	else
         	$nombre = 'hasnotification hasnotification-danger';
 
-        return $nombre;
+        return array('clase' => $nombre, 'numero' => $total);
     }
 
     /**
