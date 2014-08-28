@@ -54,13 +54,7 @@ class NotifiableBehavior extends ModelBehavior {
      * $this->User->notify('post_comment', array('User'=>2,'Comment'=>1));
      *
      */
-    public function notify(Model $Model, $user_id, $type, $subjects = array()){
-
-        if(is_string($user_id) && is_array($type)){
-            $subjects = $type;
-            $type = $user_id;
-            $user_id = $Model->id;
-        }
+    public function notify(Model $Model, $type, $subjects = array()){
 
 		$grupo_notificaciones = ClassRegistry::init('User')->find('all', array(
 			'recursive' => 0,

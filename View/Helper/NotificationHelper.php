@@ -7,6 +7,7 @@ class NotificationHelper extends AppHelper{
 	);
 
 	public function display($notification, $type = false){
+		#pr($notification);
 		return $this->_View->element('Notification/'. ($type?$type . '/' : '') . $notification['Notification']['type'], array('data' => $notification));
 	}
 
