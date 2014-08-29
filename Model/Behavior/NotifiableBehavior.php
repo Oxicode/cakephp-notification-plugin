@@ -55,17 +55,19 @@ class NotifiableBehavior extends ModelBehavior {
      *
      */
     public function notify(Model $Model, $type, $subjects = array()){
+    	$Model->Behaviors->load('Containable');
 
-		$grupo_notificaciones = ClassRegistry::init('User')->find('all', array(
-			'recursive' => 0,
+		$grupo_notificaciones = $Model->find('first', array(
 			'cache' => true,
+			'recursive' => 1,
+			'contain' => ['User'],
 			'conditions' => array('Role.notificaciones' => 1)
 		));
 
-		foreach ($grupo_notificaciones as $key => $value) :
+		foreach ($grupo_notificaciones['User'] as $key => $value) :
 		    $notification[$key] = array(
 		        'Notification' => array(
-		            'user_id' => (int) $value['User']['id'],
+		            'user_id' => (int) $value['id'],
 		            'type'    => $type,
 		        ),
 		        'Subject' => array()
